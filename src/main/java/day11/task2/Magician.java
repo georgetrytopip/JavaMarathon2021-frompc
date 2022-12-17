@@ -23,7 +23,7 @@ public class Magician extends Hero implements MagicAttack {
         if (hero.magicDef == 0) {
             magicAttack = magicAtt;
         } else {
-            magicAttack = magicAtt * hero.magicDef;
+            magicAttack = magicAtt - (magicAtt * hero.magicDef);
         }
 
         double heroHealthAfterAttack = hero.health - magicAttack;
