@@ -1,4 +1,4 @@
-package day12.task4;
+package day12.task5;
 
 public class Member {
     private String Name;
@@ -20,9 +20,4 @@ public class Member {
     public String toString(){
         return Name + " " + SecondName;
     }
-
-
-
-
-
 }
