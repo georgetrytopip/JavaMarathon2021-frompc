@@ -9,16 +9,13 @@ public class Task1 {
 
         File file = new File("test");
 
-
         try {
             System.out.println(printSumDigits(file));
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Файл не найден");
         } catch (IncorrectLengthException e) {
-            System.out.println("Не верная длина символов в файле");
+            System.out.println("Некорректный входной файл");
         }
-
-
     }
 
     public static int printSumDigits(File file) throws FileNotFoundException, IncorrectLengthException {
@@ -33,15 +30,13 @@ public class Task1 {
         }
 
         if(counter != 10) {
-            throw new IncorrectLengthException("В файле должно быть 10 чисел");
+            throw new IncorrectLengthException("В файле должно быть 10 чисел"); //выбрасываем исключение
         }
 
         int sum = 0;
-
         for (int number : numbers) {
             sum = sum + number;
         }
-
         return sum;
     }
 }
