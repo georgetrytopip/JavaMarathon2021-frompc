@@ -13,14 +13,14 @@ public class Task1 {
 
         int counter = 0;
 
-        while(counter < 0){
-            chesses.add(PAWN_WHITE);
-            chesses.add(PAWN_BLACK);
+        while(counter < 4){
+            chesses.add(ChessPiece.PAWN_WHITE);
+            chesses.add(ChessPiece.PAWN_BLACK);
             counter++;
         }
 
         for(ChessPiece piece : chesses) {
-            System.out.println(piece);
+            System.out.print(piece.getSymbol() + " ");
         }
 
     }
