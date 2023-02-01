@@ -12,6 +12,16 @@ public class Ship{
 
     private Map<Integer, Deck> deckMap;
 
+    private boolean alive = true;
+
+    public boolean getShipAlive(){
+        return this.alive;
+    }
+
+    public void setShipDead(){
+        this.alive = false;
+    }
+
 
 
     Ship(int deckLength, String shipName) {

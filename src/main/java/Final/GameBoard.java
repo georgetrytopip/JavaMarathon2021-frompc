@@ -11,6 +11,23 @@ public class GameBoard {
     private int boardLengthVertical = 10;
 
 
+    public boolean isBoardDead(){
+        boolean counter = false;
+        for(int i = 0; i < boardLengthHorizontal; i++) {
+            for (int j = 0; j < boardLengthVertical; j++) {
+                if (this.warships[i][j].getShipAlive()) {
+                    counter = false;
+                } else if (!this.warships[i][j].getShipAlive()) {
+                    counter = true;
+                }
+            }
+        }
+        return counter;
+    }
+
+
+
+
     public int setBoardLengthHorizontal(int boardLengthHorizontal) {
         this.boardLengthHorizontal = boardLengthHorizontal;
         return boardLengthHorizontal;
@@ -145,7 +162,7 @@ public class GameBoard {
 
     public boolean checkAvailability(int j1, int f1) {
         boolean yesNo = true;
-        if(warships[j1][f1].getShipLength() !=0) {
+        if (warships[j1][f1].getShipLength() != 0) {
             yesNo = false;
         }
         if (j1 == 1 & warships[j1][f1].getShipLength() == 0) {
@@ -159,13 +176,25 @@ public class GameBoard {
                 yesNo = false;
             }
         } else {
-            int a = j1 - 1;
-            int b = f1 - 1;
-            int c = j1 + 1;
-            int d = f1 + 1;
-            if (warships[a][b].getShipLength() != 0 ||
-                    warships[c][d].getShipLength() != 0) {
-                yesNo = false;
+
+            if (j1 == 0 || f1 == 0) {
+                int a = j1;
+                int b = f1;
+                int c = j1 + 1;
+                int d = f1 + 1;
+                if (warships[a][b].getShipLength() != 0 ||
+                        warships[c][d].getShipLength() != 0) {
+                    yesNo = false;
+                }
+            } else {
+                int a = j1 - 1;
+                int b = f1 - 1;
+                int c = j1 + 1;
+                int d = f1 + 1;
+                if (warships[a][b].getShipLength() != 0 ||
+                        warships[c][d].getShipLength() != 0) {
+                    yesNo = false;
+                }
             }
         }
         return yesNo;
@@ -189,6 +218,8 @@ public class GameBoard {
                         }
                         if (counter == 0) {
                             System.out.println("Ship is killed");
+                            warships[coordinateA][coordinateB].setShipDead();
+
                         } else {
                             System.out.println("Ship is damaged");
                         }
